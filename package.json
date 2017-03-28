@@ -1,0 +1,41 @@
+{
+  "name": "@types/element-resize-detector",
+  "version": "0.0.3",
+  "description": "Custom typings descriptor for Element Resize library https://github.com/wnr/element-resize-detector",
+  "homepage": "https://github.com/curb47/typed-element-resize-detector",
+  "publishConfig": {
+    "registry": "http://10.1.10.46:4873"
+  },
+  "author": "Collin Brown",
+  "license": "ISC",
+  "scripts": {
+    "build": "echo building... && typings bundle -o out/src/element-resize-detector.d.ts",
+    "lint": "echo linting... && tslint \"**/*.ts\" -e \"source/**\" -e \"source-test/**\" -e \"out/**\" -e \"node_modules/**\" -e \"typings/**\"",
+    "browser-test": "echo running browser tests... && node npm-scripts/test \"test/**/*.ts\"",
+    "source-test": "echo running source tests... &&  echo no source test",
+    "test": "echo running server tests... && cd test && ts-node ../node_modules/blue-tape/bin/blue-tape \"**/*.ts\" | tap-spec",
+    "watch": "onchange -w \"**/*.ts\" -i -e \"out/**\" -- npm -s run build+test",
+    "publish": "npm -s run lint+build+test && echo please publish to typings/registry",
+    "all-tests": "npm test && npm run browser-test",
+    "build+test": "npm run build && npm run all-tests",
+    "lint+build+test": "npm run lint && npm run build+test",
+    "prepublish": "typings install"
+  },
+  "devDependencies": {
+    "blue-tape": "^1.0.0",
+    "element-resize-detector": "1.1.11",
+    "jspm": "^0.16.53",
+    "onchange": "^3.2.1",
+    "stream": "0.0.2",
+    "tap-spec": "^4.1.1",
+    "tape-run": "^3.0.0",
+    "ts-node": "^3.0.2",
+    "tslint": "^4.5.1",
+    "tslint-config-typings": "^0.3.1",
+    "typings": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/curb47/typed-element-resize-detector.git"
+  }
+}
